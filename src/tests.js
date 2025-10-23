@@ -1,23 +1,22 @@
-class Stack {
-  #stack = [];
+class Queue {
+  #queue = [];
 
-  push(value) {
-    this.#stack.push(value);
+  getUnderlyingList() {
+
   }
 
-  pop() {
-    return this.#stack.pop();
+  enqueue(/* value */) {
+
   }
 
-  peek() {
-    return this.#stack.at(-1);
+  dequeue() {
+
   }
 }
 
-const stack = new Stack();
-console.log(stack);
-
-console.log(stack.push(1)); // adds the element to the stack
-console.log(stack.peek()); // returns the peek, but doesn't delete it, returns 1
-console.log(stack.pop()); // returns the top element from stack and deletes it, returns 1
-console.log(stack.pop()); // undefined
+const queue = new Queue();
+console.log(queue);
+console.log(queue.enqueue(1)); // adds the element to the queue
+console.log(queue.enqueue(3)); // adds the element to the queue
+console.log(queue.dequeue()); // returns the top element from queue and deletes it, returns 1
+console.log(queue.getUnderlyingList()); // returns { value: 3, next: null }

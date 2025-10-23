@@ -12,19 +12,42 @@ const { NotImplementedError } = require('../lib/errors');
  * stack.pop(); // undefined
  *
  */
+// class Stack {
+//   #stack = [];
+
+//   push(value) {
+//     this.#stack.push(value);
+//   }
+
+//   pop() {
+//     return this.#stack.pop();
+//   }
+
+//   peek() {
+//     return this.#stack.at(-1);
+//   }
+// }
+
 class Stack {
-  #stack = [];
+  #storage = {};
+  #size = 0;
 
   push(value) {
-    this.#stack.push(value);
+    this.#size += 1;
+    this.#storage[this.#size] = value;
   }
 
   pop() {
-    return this.#stack.pop();
+    if (this.#size === 0) return undefined;
+    const removed = this.#storage[this.#size];
+    delete this.#storage[this.#size];
+    this.#size -= 1;
+    return removed;
   }
 
   peek() {
-    return this.#stack.at(-1);
+    if (this.#size === 0) return undefined;
+    return this.#storage[this.#size];
   }
 }
 
