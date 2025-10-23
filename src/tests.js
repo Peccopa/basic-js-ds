@@ -1,35 +1,39 @@
+const { NotImplementedError } = require('../lib/errors');
 // const { ListNode } = require('../extensions/list-node.js');
 
-// class Queue {
-//   #head = null;
-//   #tail = null;
+/**
+ * Given a singly linked list of integers l and an integer k,
+ * remove all elements from list l that have a value equal to k.
+ *
+ * @param {List} l
+ * @param {Number} k
+ * @return {List}
+ *
+ * @example
+ * For l = [3, 1, 2, 3, 4, 5] and k = 3,
+ * the output should be [1, 2, 4, 5]
+ *
+ * Singly - linked lists are already defined using interface
+ * class ListNode {
+ *   constructor(x) {
+ *     this.value = x;
+ *     this.next = null;
+ *   }
+ * }
+ */
+function removeKFromList(l, k) {
+  if (l.value === k) l = l.next;
+  let cur = l;
+  while (cur !== null) {
+    if (cur.next !== null && cur.next.value === k) {
+      cur.next = cur.next.next;
+    } else {
+      cur = cur.next;
+    }
+  }
+  return l;
+}
 
-//   getUnderlyingList() {
-//     return this.#head;
-//   }
-
-//   enqueue(value) {
-//     const node = new ListNode(value);
-//     if (this.#head) {
-//       this.#tail.next = node;
-//       this.#tail = node;
-//     } else {
-//       this.#head = node;
-//       this.#tail = node;
-//     }
-//   }
-
-//   dequeue() {
-//     if (!this.#head) return undefined;
-//     const head = this.#head.value;
-//     this.#head = this.#head.next;
-//     return head;
-//   }
-// }
-
-// const queue = new Queue();
-// console.log(queue);
-// console.log(queue.enqueue(1)); // adds the element to the queue
-// console.log(queue.enqueue(3)); // adds the element to the queue
-// console.log(queue.dequeue()); // returns the top element from queue and deletes it, returns 1
-// console.log(queue.getUnderlyingList()); // returns { value: 3, next: null }
+module.exports = {
+  removeKFromList,
+};
